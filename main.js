@@ -1,28 +1,24 @@
-//  How insert in the DOM: BEFORE() & AFTER()
+// EVENTS
 
 $(document).ready(function() {
-    //content to insert
-    var $link = $('<a href="#"> LINK 1  </a>');
-    // entry point
-    $('.contenido').find('p').first().before($link);
-});
+    // 1.select + change
+    var $myP = $('.contenido').find('p').first();
+    var $link = $('.lateral').find('a').last();
 
-//  How insert in the DOM: PREPEND() $ APPEND()
+    $link.on('click', function() {
+        // console.log('works')
+        if (!$myP.css('color', 'red')) {
+            $myP.css('color', 'red');
+        }else{
+            $myP.css('color', 'black');
+        }
+    });
 
-$(document).ready(function() {
-    //content to insert
-    var $link = $('<a href="#"> LINK 2 </a>');
-    // entry point
-    $('.contenido').find('p').append($link);
-});
-
-//  Eliniate elements from the DOM: DETACH() & REMOVE()
-
-$(document).ready(function() {
-    //content to insert
-    var $link = $('<a href="#"> LINK 2 </a>');
-    // entry point
-    $('.contenido').find('p').last().remove();
+    // Listen P
+    $('.contenido').children('p').on('click', function(e) {
+        console.log('this');
+        this.css('color', 'red');
+    })
 });
 
 
