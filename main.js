@@ -1,30 +1,17 @@
-// once the Dom is ready
-// $(document).ready(function() {
-//     $('.lateral').find('a').last().on('click', function() {
-//         $('.contenido'.children('p').css('color','red'));
-//     });
-// // THIS becomes $THIS in JQuery
-//     $('.contenido').children('p').on('click', function(event) {
-//         event.preventDefault();
-//         $(this).css('color', 'red');
-//     });
-// });
-// HTML DATA - Store DATA in HTML5 > data / dataset
+// Do the 'least' amount of search in th DOM 
+// That's why we cache some info to use less memory
 
 $(document).ready(function() {
-    $myVar= $('.lateral').find('a').last();
-    // Getter
-    var myData = $myVar.data('secret');
-    // Setter
-    $myVar.data('secret', 'mossad secretmossad secret');
-    // Find
-    console.log(myData);
+    $select = $('.contenido').find('p').last();
+    //console.log($select);
+    $css = $select.css('color', 'orangered');
+    $myData = $css.data('secret');
+    console.log($myData);
+    // LINK
+    var $link = $('<a href="#>LINK</a>');
+    // APPEND TO SELECT on CHAINING METHODS
+    $myData.append($link);
 
-    // Filter selection
-    var myData = $('*');
-    filtrado = myData.filter(function() {
-        data = $(this).data('secret');
-        return data == 'KGB';
-    })
-    console.log(filtrado);
+    // EVeNT DELEGATION
+
 });
