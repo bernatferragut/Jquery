@@ -1,17 +1,17 @@
-// Do the 'least' amount of search in th DOM 
-// That's why we cache some info to use less memory
+// FILTER JQuery
 
 $(document).ready(function() {
-    $select = $('.contenido').find('p').last();
-    //console.log($select);
-    $css = $select.css('color', 'orangered');
-    $myData = $css.data('secret');
-    console.log($myData);
-    // LINK
-    var $link = $('<a href="#>LINK</a>');
-    // APPEND TO SELECT on CHAINING METHODS
-    $myData.append($link);
 
-    // EVeNT DELEGATION
+    // select 1
+    // let $el = $('.lateral').find('a').filter(':even');
+    // console.log($el);
+    // $el.css('transform', 'scale(1)');
 
+    // Passing a function to filer
+    let $scLink = $('.lateral').find('a')
+        .filter(function(index, element) {
+            return $(element).find('span').text() 
+            === 'Snapchat';
+        });
+     console.log($scLink.css('transform', 'rotate(45deg)'));
 });
