@@ -1,17 +1,18 @@
-// FILTER JQuery
+// Slide Toggle - SlideToggle()
 
 $(document).ready(function() {
-
-    // select 1
-    // let $el = $('.lateral').find('a').filter(':even');
-    // console.log($el);
-    // $el.css('transform', 'scale(1)');
-
-    // Passing a function to filer
-    let $scLink = $('.lateral').find('a')
-        .filter(function(index, element) {
-            return $(element).find('span').text() 
-            === 'Snapchat';
+    // select
+    let $el = $('.contenido').children('p');
+    // event
+    let $cat = $('.lateral').children('img');
+    $cat.on('click', function() {
+        showSequence($el, 1000);
+    })
+    // functionality
+    function showSequence($collection, time) {
+        this.time = time || 1000;
+        $el.each(function(index, element){
+            $(element).slideToggle(time * index +1);
         });
-     console.log($scLink.css('transform', 'rotate(45deg)'));
+    }
 });
