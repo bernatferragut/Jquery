@@ -1,49 +1,28 @@
-// Slide Toggle - SlideToggle()
-
+// JQ1KeyBoard Events
 // $(document).ready(function() {
-//     // select
-//     let $el = $('.contenido').children('p');
-//     // event
-//     let $cat = $('.lateral').children('img');
-//     $cat.on('click', function() {
-//         showSequence($el, 1000);
-//     })
-//     // functionality
-//     function showSequence($collection, time) {
-//         this.time = time || 1000;
-//         $el.each(function(index, element){
-//             $(element).slideToggle(time * index +1);
-//         });
-//     }
+//     // $elA input
+//     $elA = $('#enter');
+//     // $elB output
+//     $elB = $('.contenido').children('h1');
+//     // Reaction
+//     $elA.on('keyup', function(event) {
+//         $elB.text($elA.val());
+//     });
 // });
 
-// Mouse Events
-
-// $(document).ready(function() {
-//     // select
-//     $el = $('.contenido').children('p');
-//     // event
-//     $active = $();
-//     $el.on('mouseenter', function() {
-//         myF($el, 2000);
-//     })
-//     function myF($collection, time) {
-//         this.time =  time || 1000;
-//         $collection.each(function(index, element)  {
-//             $(element).slideToggle(time * (index * 1));
-//         });
-//     }
-// });
-
+// Accessing am especific KEY
 $(document).ready(function() {
-    // select input
-    $input = $('#enter');
-    // select h1
-    $h1 = $('.contenido').children('h1');
-    //console.log($input);
-    $input.on('keyup', function(event) {
-        // console.log(event);
-        $h1.text($input.val());
-    })
+    // $elA input
+    $elA = $('#enter');
+    // $elB output
+    $elB = $('.contenido').children('h1');
+    //JQ Reaction
+    $elA.on('keyup', function(event) {
+        //console.log(event.which) => JS gives 
+        let eventCode = event.which;
+        if( eventCode === 13) {
+            $elB.text($elA.val());
+            $elA.val('');
+        }
+    });
 });
-
