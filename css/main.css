@@ -128,5 +128,17 @@ main > * {
 .dev {
     border: 1px solid red;
 }
+
+/* EXTRA CLASSES */
+/* Try Animate.css */
+.myClassA {
+    color: blue;
+    font-size: 1.2em;
+}
+.myClassB {
+    color: red;
+    font-size: 1em;
+}
+
 Contact GitHub API Training Shop Blog About
 © 2017 GitHub, Inc. Terms Privacy Security Status Help

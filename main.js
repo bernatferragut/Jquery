@@ -1,46 +1,31 @@
-// JQ1KeyBoard Events
+// Animate() in JQuery
+// use VELOCITY.js instead
+// or GREEN Sock
 // $(document).ready(function() {
-//     // $elA input
-//     $elA = $('#enter');
-//     // $elB output
-//     $elB = $('.contenido').children('h1');
-//     // Reaction
-//     $elA.on('keyup', function(event) {
-//         $elB.text($elA.val());
+//     // chaining two animation + call back at the end
+//     $anima = $('.lateral').animate({
+//         'flex-basis':'90%',
+//         'padding': '10px',
+//     }, 3000, function() {
+//        $('main').animate({
+//            'width': '110px'
+//        }, 4000, function() {
+//            console.log('finnaly ended')
+//        })
 //     });
 // });
 
-// Accessing am especific KEY
-// $(document).ready(function() {
-//     // $elA input
-//     $elA = $('#enter');
-//     // $elB output
-//     $elB = $('.contenido').children('h1');
-//     //JQ Reaction
-//     $elA.on('keyup', function(event) {
-//         //console.log(event.which) => JS gives 
-//         let eventCode = event.which;
-//         if( eventCode === 13) {
-//             $elB.text($elA.val());
-//             $elA.val('');
-//         }
-//     });
-// });
-
-// PREVENT DEFAULT
+// Using Animate CSS library
 $(document).ready(function() {
-    $formA = $('form');
-    //console.log($formA);
-    // with FORMS
-    $formA.on('submit', function(evt) {
-        evt.preventDefault();
-        console.log('submited!');
+    let $i = $('.lateral').children('img');
+    $i.on('click', function() {
+        $m = $('main');
+        $m.addClass('animated fadeIn');
+        //timeout();
     });
 
-    //with HYPERLINKS
-    $link = $('a');
-    $link.on('click', function(evt) {
-        evt.preventDefault();
-        console.log('clicked!');
-    });
+    let timeout = setTimeout(function() {
+        $m.addClass('fadeOut');
+        clearTimeout(timeout);
+    }, 3000);
 });
