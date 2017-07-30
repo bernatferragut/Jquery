@@ -1,49 +1,33 @@
-// FULL JQuery SLIDER
+// JS
+// Hover(fn1,fn2); 
 $(document).ready(function() {
-    // SELECTIONS
-    let $list = $('li'); // images li list
-    $images = $('li').find('img'); // images
-    let active = 0;
-    let quantity = $images.length;
-    // START
-    // Cancel images and add to to li background
-    $images.hide();
-    // EACH()
-    $images.each(function(index, image) {
-        $list.eq(index).css({
-            'background-image':'url('+ $(image).attr('src')+')',
-            'background-size': 'cover',
-            'background-position': 'center center',
-            'position':'absolute'
+    $('a').hover(function() {
+        // 1. save the title
+        let $t = $(this).attr('title');
+        let $c = $(this).data('color');
+        // 2. save data and erase original title
+        $(this).data('$t', $t).removeAttr('title');
+        // 3. Add ourTooltip
+        $('<p class="tooltip"></p>')
+            .text($t)
+            .css('color', $c)
+            .appendTo('body')
+            .fadeIn('slow');
+    }, function() {
+        // HOVER OUT
+        // put back the native title
+        $(this).attr('title', $(this).data('$t'));
+        // Erase our tootlip
+        $('.tooltip').remove(); 
+    }).mousemove(function(e) {
+        // ADD on MOVE
+        // capturing X Y on the mouse over tooltip
+        let mouseX = e.pageX + 10;
+        let mouseY = e.pageY + 10;
+        // make that tooltip moves with poiner
+        $('.tooltip').css({
+            top: mouseY,
+            left: mouseX
         });
-        $(image).remove();
     });
-    // show first image
-    $list.eq(active).fadeIn();
-
-    // EventListeners
-    let $right = $('#right');
-    $right.on('click', function(e) {
-        e.preventDefault();
-        active +=1;
-        if(active > quantity-1) {
-            active = 0;
-        }
-        showImage();
-    });
-
-    let $left = $('#left');
-    $left.on('click', function(e) {
-        e.preventDefault;
-        active -=1;
-        if(active < 0) {
-            active = quantity-1;
-        }
-        showImage();
-    })
-    function showImage() {
-        $list.hide().eq(active).fadeIn();
-    }
 });
-
-
