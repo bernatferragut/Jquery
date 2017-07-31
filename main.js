@@ -1,7 +1,9 @@
 // JS
 // Hover(fn1,fn2); 
 $(document).ready(function() {
+
     $('a').hover(function() {
+        // hoverIn()
         // 1. save the title
         let $t = $(this).attr('title');
         let $c = $(this).data('color');
@@ -14,7 +16,7 @@ $(document).ready(function() {
             .appendTo('body')
             .fadeIn('slow');
     }, function() {
-        // HOVER OUT
+        // HoverOut
         // put back the native title
         $(this).attr('title', $(this).data('$t'));
         // Erase our tootlip
@@ -30,4 +32,5 @@ $(document).ready(function() {
             left: mouseX
         });
     });
+
 });
