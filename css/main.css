@@ -19,7 +19,7 @@ body {
     font-family: sans-serif;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 main {
