@@ -39,14 +39,15 @@ a {
     color: black;
 }
 
-.tooltip {
-    display: none;
-    position: absolute;
-    border: 2px solid gray;
-    background-color: black;
-    border-radius: 5px;
+input, textarea {
+    display: block;
+    width: 100%;
+    border: none;
     padding: 10px;
+    margin: 5px 0;
+}
+
+input[type="submit"] {
+    background: black;
     color: white;
-    font-size: 16px;
-    box-shadow: 1px 1px 2px gray;
 }

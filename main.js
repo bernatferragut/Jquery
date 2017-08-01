@@ -1,42 +1,26 @@
-// AJAX - ARGUMENTS
+// JQuery AJAX - moving on your search results
+// https://randomuser.me/api/?results=500
+// results.pivture.thumbnail
+
+
 $(document).ready(function() {
-    $.ajax('imported.html',{
+    // SEARCH
+    $('button').on('click', function(evt) {
+        evt.preventDefault();
+        // Getting JSON Data
+        $.getJSON('https://randomuser.me/api/?results=50')
+            .then(showPictures)
+            .fail(err => console.log(err))
+            .always(() => console.info('req.finished'));
 
-        beforeSend: function() {
-            // show loading spinner
-        },
-        success: function(res, status, request) {
-            console.log(arguments);
-            $('h1').append(res);
-        },
-        error: function(res,errorTypr, message) {
-            console.log(arguments);
-        },
-        complete: function(res, status) {
-            console.log(arguments);
-        },
-        timeout: 1
-
+        // Compose pictures    
+        function showPictures(pictures) {
+            //console.log(pictures);
+            $.each(pictures,function(index, picture) {
+                // console.log(picture);
+               $('div').css('background-image', 
+                `url($(picture.results.picture))`).appendTo($('.fotos'));
+            })
+        }
     });
 });
-
-// PROMISES API > 3.0 
-
-$(document).ready(function() {
-    $.ajax('imported.html')
-        // success()
-        .done( function(res) {
-            $('h1').append(res);
-        })
-        // error()
-        .fail(function(res, error, message) {
-            console.log(arguments);
-        })
-        // complete()
-        .always(function(res, status) {
-            console.log(arguments);
-        })
-});
-
-
-
