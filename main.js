@@ -15,7 +15,9 @@ $(document).ready(function() {
 
         // Compose pictures    
         function showPictures(pictures) {
-            //console.log(pictures);
+            // Elininate event Listener
+            $('button').off('click');
+            // Search for the picture
             $.each(pictures,function(index, picture) {
                 // console.log(picture);
                $('div').css('background-image', 
