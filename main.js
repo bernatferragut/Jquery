@@ -1,28 +1,24 @@
-// JQuery AJAX - moving on your search results
-// https://randomuser.me/api/?results=500
-// results.pivture.thumbnail
+// JQuery Plug-ins
 
+//Plug-In to change the elements color
 
 $(document).ready(function() {
-    // SEARCH
-    $('button').on('click', function(evt) {
-        evt.preventDefault();
-        // Getting JSON Data
-        $.getJSON('https://randomuser.me/api/?results=50')
-            .then(showPictures)
-            .fail(err => console.log(err))
-            .always(() => console.info('req.finished'));
+    // 1.Create a 'special' function that holds all
+    // This is the JQuery Prototype.
+    // console.log($.fn === $.prototype)
+    $.fn.changeColor = function(options) {
+        // to have a default color (fallback)
+        const config = $.extend({
+            color: 'red',
+        }, options );
 
-        // Compose pictures    
-        function showPictures(pictures) {
-            // Elininate event Listener
-            $('button').off('click');
-            // Search for the picture
-            $.each(pictures,function(index, picture) {
-                // console.log(picture);
-               $('div').css('background-image', 
-                `url($(picture.results.picture))`).appendTo($('.fotos'));
-            })
-        }
+        this.each((index, element) =>{ 
+            let color = config.color;
+            $(element).css('color', color);
+        } )
+    };
+    $pars = $('.contenido').children('p').changeColor({
+        color: 'green',
     });
 });
+
