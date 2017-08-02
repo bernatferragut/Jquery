@@ -2,23 +2,55 @@
 
 //Plug-In to change the elements color
 
-$(document).ready(function() {
-    // 1.Create a 'special' function that holds all
-    // This is the JQuery Prototype.
-    // console.log($.fn === $.prototype)
-    $.fn.changeColor = function(options) {
-        // to have a default color (fallback)
-        const config = $.extend({
-            color: 'red',
-        }, options );
+// $(document).ready(function() {
+//     // console.log($.fn === $.prototype)
+//     $.fn.changeColor = function(options) {
+//         // object configuration with default
+//         const config = $.extend({
+//             color: 'red',
+//         }, options );
+//         // action
+//         this.each((index, element) =>{ 
+//             let color = config.color;
+//             $(element).css('color', color);
+//         } )
+//     };
+//     // Example of selected element
+//     $('.contenido').children('p').changeColor({
+//         color: 'green'
+//     });
+// });
 
-        this.each((index, element) =>{ 
-            let color = config.color;
-            $(element).css('color', color);
-        } )
-    };
-    $pars = $('.contenido').children('p').changeColor({
-        color: 'green',
-    });
+// DEFINING A PROMISE IN JQUERY
+// $.deferred.promise()
+$(document).ready(() => {
+    function APIconsult() {
+        const deferred = $.Deferred();
+        setTimeout(function() {
+            var res = [
+                { title: 'learn JQ' },
+                { title: 'learn JS' },
+                { title: 'learn PY' },
+            ];
+            //success
+            deferred.resolve(res);
+            //fail
+            deferred.reject(Error('Did not work'))
+        },2000);
+        return deferred.promise();
+    }
+
+    APIconsult()
+        .then((res) => {
+            console.log(res);
+        })
+        .fail((err) => {
+            console.log(err);
+        })
+        .always(()=> {
+            console.log('finished');
+        })
 });
+
+
 
